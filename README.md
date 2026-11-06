@@ -20,8 +20,6 @@ The baseline is a keypoint-heatmap regressor:
 3. **Pose:** the most confident keypoints (5 by default) are lifted to a 6D pose with PnP +
    RANSAC and refined with Levenberg–Marquardt.
 
-The same code also runs on [SPEED+](https://kelvins.esa.int/pose-estimation-2021/) (11 keypoints).
-
 ## Installation
 
 ```bash
@@ -120,7 +118,7 @@ The script prints the following metrics (mean and std) and the number of rejecte
 |---|---|
 | `test_ang_err` | Rotation error, in degrees |
 | `test_loc_err_norm` | Translation error divided by the ground-truth distance |
-| `test_speed_score` | SPEED score: rotation error (rad) + normalized translation error |
+| `test_speed_score` | Pose score: rotation error (rad) + normalized translation error |
 | `test_accuracy` | Fraction of keypoints within 15 px of the ground truth |
 
 The per-image predictions are saved to `test_predictions_<general.id>.json` in the run directory.
@@ -135,15 +133,6 @@ python infer_folder.py general.checkpoint_path=/path/to/model.ckpt \
     +input_dir=/path/to/images +vis_dir=/path/to/output \
     +draw_skeleton=true
 ```
-
-## SPEED+
-
-```bash
-python train.py --config-name speed_cfg general.dataset_dir=/path/to/data
-python test.py  --config-name speed_cfg general.checkpoint_path=/path/to/model.ckpt datamodule.group=target
-```
-
-The annotation paths are set in [conf/datamodule/keypoint_speed.yaml](conf/datamodule/keypoint_speed.yaml).
 
 ## Configuration
 

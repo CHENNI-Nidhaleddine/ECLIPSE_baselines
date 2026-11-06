@@ -1,4 +1,4 @@
-"""Evaluate a trained checkpoint (keypoint accuracy + 6D pose errors / SPEED score).
+"""Evaluate a trained checkpoint (keypoint accuracy + 6D pose errors).
 
 Usage:
     python test.py general.checkpoint_path=/path/to/model.ckpt general.dataset_dir=/path/to/data

@@ -26,8 +26,8 @@ from albumentations.core.composition import Compose, KeypointParams
 
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
 
-# Mirrors conf/datamodule/keypoint_speed.yaml num_keypoints.
-NUM_KEYPOINTS = 11
+# Mirrors conf/datamodule/keypoint_eclipse.yaml num_keypoints.
+NUM_KEYPOINTS = 8
 IMAGE_SIZE = 256
 MARKER_RADIUS = 8
 # Keypoints are placed on a ring of this radius around the image center, so
@@ -39,8 +39,7 @@ RING_RADIUS = 50
 # maps to color i), so a mixed-up ordering after a transform is also caught.
 KEYPOINT_COLORS = [
     (230, 25, 75), (60, 180, 75), (255, 225, 25), (0, 130, 200), (245, 130, 48),
-    (145, 30, 180), (70, 240, 240), (240, 50, 230), (210, 245, 60), (250, 190, 212),
-    (0, 128, 128),
+    (145, 30, 180), (70, 240, 240), (240, 50, 230),
 ]
 
 

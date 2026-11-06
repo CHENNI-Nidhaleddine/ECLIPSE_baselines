@@ -233,24 +233,12 @@ class LitPoseBase(LightningModule):
                 q_est, t_est = self.pose_estimator.solve_pose2(
                     keypoints, np.array(indices), RANSAC=True
                 )
-                
+
+                # Reject physically implausible poses (target behind the camera or > 50 m away).
                 reject = False
-                if self.cfg.general.dataset_id == 'speedplus':
-                    if t_est[2] < 0 or t_est[2] > 50:
-                        reject = True
-                        self.rejs = self.rejs + 1
-                    else:
-                        # --- 2. Check xy limits based on estimated z distance
-                        x_max = t_est[2] * 0.326 #* np.tan(camera["horizontalFOV"]/2)
-                        y_max = x_max / self.camera_params["Nu"] * self.camera_params["Nv"]
-                    
-                        if t_est[0] < -x_max or t_est[0] > x_max or t_est[1] < -y_max or t_est[1] > y_max:
-                            reject = True
-                            self.rejs=self.rejs+1
-                if self.cfg.general.dataset_id == 'eclipse_final':
-                    if t_est[2] < 0 or t_est[2] > 50:
-                        reject = True
-                        self.rejs = self.rejs + 1
+                if t_est[2] < 0 or t_est[2] > 50:
+                    reject = True
+                    self.rejs = self.rejs + 1
 
                 # Calculate metrics
                 t_gt = t_gt.detach().cpu().numpy()

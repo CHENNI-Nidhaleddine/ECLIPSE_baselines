@@ -1,5 +1,4 @@
 path: ${general.dataset_root}
-target: target # not used
 # Which split is used for validation / testing:
 #   source -> synthetic validation split (val_*)
 #   target -> real test split (test_*)

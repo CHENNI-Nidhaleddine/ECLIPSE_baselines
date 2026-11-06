@@ -1,8 +1,7 @@
-"""Train a heatmap-based keypoint regressor on synthetic images.
+"""Train a heatmap-based keypoint regressor on the ECLIPSE synthetic images.
 
 Usage:
     python train.py general.dataset_dir=/path/to/data
-    python train.py --config-name speed_cfg general.dataset_dir=/path/to/data   # SPEED+
 """
 import os
 import warnings
