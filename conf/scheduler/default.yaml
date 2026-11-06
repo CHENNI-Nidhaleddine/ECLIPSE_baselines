@@ -1,0 +1,7 @@
+class_name: torch.optim.lr_scheduler.MultiStepLR
+interval: epoch
+monitor: ${training.metric_val_avg_accuracy}
+frequency: 1
+params:
+  milestones: [25, 35]
+  gamma: 0.1

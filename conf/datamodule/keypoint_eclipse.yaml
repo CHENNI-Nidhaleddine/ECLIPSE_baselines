@@ -1,0 +1,29 @@
+path: ${general.dataset_root}
+target: target # not used
+# Which split is used for validation / testing:
+#   source -> synthetic validation split (val_*)
+#   target -> real test split (test_*)
+group: source
+train_img_path: ${general.dataset_root}/synthetic_images/
+train_data_json: ${general.dataset_root}/train_syn.json
+val_img_path: ${general.dataset_root}/synthetic_images/
+val_data_json: ${general.dataset_root}/validation_syn.json
+test_img_path: ${general.dataset_root}/real_images/
+# All real images. For a single lighting condition use e.g. ${general.dataset_root}/L04.json
+test_data_json: ${general.dataset_root}/test_real.json
+class_name: src.datasets.PoseEffecientNetDataset.KeypointDataset
+image_size: [ 1440, 1080 ]
+padding_scale_factor: 2.25 # images are padded to input_size * padding_scale_factor, then resized to input_size
+padded_image_size: null # this will be set by the code.
+input_size: [ 640, 512 ]
+output_size: [ 320, 256 ]
+num_keypoints: 8
+heatmap_sigma: [ 1.0, 1.0 ]
+points_json: ${general.dataset_root}/points.json
+camera_json: ${general.dataset_root}/real_camera.json
+use_ransac: True
+img_to_heatmap_scale: 12
+confidence_threshold: 0.01
+num_points_for_pose: 5
+rotation_threshold: 10
+translation_threshold: 0.8

@@ -1,0 +1,28 @@
+path: ${general.dataset_root}
+target: sunlamp # not used
+# Which split is used for validation / testing:
+#   source -> synthetic validation split (val_*)
+#   target -> real test split (test_*), e.g. sunlamp or lightbox
+group: source
+train_img_path: ${general.dataset_root}/synthetic/images_full
+train_data_json: ${general.dataset_root}/synthetic/train.json
+val_img_path: ${general.dataset_root}/synthetic/images_full
+val_data_json: ${general.dataset_root}/synthetic/validation.json
+test_img_path: ${general.dataset_root}/sunlamp/images
+test_data_json: ${general.dataset_root}/sunlamp/test_full.json
+class_name: src.datasets.PoseEffecientNetDataset.KeypointDataset
+image_size: [ 1920, 1200 ]
+input_size: [ 768, 512 ]
+padding_scale_factor: 2.5 # images are padded to input_size * padding_scale_factor, then resized to input_size
+padded_image_size: null # this will be set by the code.
+output_size: [ 384, 256 ]
+num_keypoints: 11
+heatmap_sigma: [ 1.0, 1.0 ]
+points_json: ${general.dataset_root}/points.json
+camera_json: ${general.dataset_root}/camera.json
+img_to_heatmap_scale: 12
+confidence_threshold: 0.01
+num_points_for_pose: 5
+rotation_threshold: 10
+translation_threshold: 0.8
+use_ransac: True

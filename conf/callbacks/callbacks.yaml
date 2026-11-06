@@ -1,0 +1,34 @@
+early_stopping:
+ class_name: pytorch_lightning.callbacks.EarlyStopping
+ params:
+   monitor: ${training.metric_val_avg_accuracy}
+   patience: 20
+   min_delta: 0.005
+   verbose: True
+   mode: ${training.mode2}
+
+model_checkpoint:
+  class_name: pytorch_lightning.callbacks.ModelCheckpoint
+  params:
+    monitor: ${training.metric_val_loss}
+    save_top_k: 3
+    dirpath: ${general.output_dir}/saved_models/
+    mode: ${training.mode}
+    save_last: True
+    filename: '{epoch}-{${training.metric_val_loss}:.5f}'
+
+model_checkpoint_acc:
+  class_name: pytorch_lightning.callbacks.ModelCheckpoint
+  params:
+    monitor: ${training.metric_val_avg_accuracy}
+    save_top_k: 3
+    dirpath: ${general.output_dir}/saved_models/
+    mode: ${training.mode2}
+    save_last: True
+    filename: '{epoch}-{${training.metric_val_avg_accuracy}:.5f}'
+
+other_callbacks:
+  - class_name: pytorch_lightning.callbacks.LearningRateMonitor
+    params:
+  - class_name: pytorch_lightning.callbacks.DeviceStatsMonitor
+    params:

@@ -1,0 +1,17 @@
+# Tested with Python 3.11 and CUDA 11.8.
+# Install PyTorch first, matching your CUDA version (see https://pytorch.org/get-started/previous-versions/), e.g.
+#   pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118
+torch==2.0.1
+torchvision==0.15.2
+pytorch-lightning==2.3.3
+hydra-core==1.3.2
+omegaconf==2.3.0
+albumentations==1.4.22
+kornia==0.7.0
+opencv-python
+numpy==1.26.4
+pandas==2.2.3
+scipy
+tensorboard
+wandb
+requests

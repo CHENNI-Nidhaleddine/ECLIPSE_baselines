@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Data, checkpoints and experiment outputs
+data/
+outputs/
+logs/
+lightning_logs/
+wandb/
+saved_models/
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+*.zip
+.hydra/
+
+# Misc
+*.log
+*.out
+*.err
+tests/output/

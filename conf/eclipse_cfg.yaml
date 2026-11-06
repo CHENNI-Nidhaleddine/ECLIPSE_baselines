@@ -1,0 +1,20 @@
+defaults:
+  - _self_
+  - general: eclipse
+  - model: pose_efficientnet
+  - trainer: server
+  - callbacks: callbacks
+  - datamodule: keypoint_eclipse
+  - training: pose_efficientnet
+  - logging: wandb
+  - optimizer: opt
+  - scheduler: default
+  - transforms: default
+
+
+hydra:
+  run:
+    dir: ${general.output_dir}
+  sweep:
+    dir: ${general.output_dir}
+    subdir: ${hydra.job.override_dirname}

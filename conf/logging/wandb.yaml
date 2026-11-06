@@ -1,0 +1,12 @@
+log: True
+loggers:
+  - class_name: pytorch_lightning.loggers.WandbLogger
+    params:
+      offline: ${general.wandb_offline}
+      save_dir: logs
+      project: ${general.project_name}
+      name: ${general.id}
+  - class_name: pytorch_lightning.loggers.TensorBoardLogger
+    params:
+      save_dir: logs
+      name: ${general.id}

@@ -1,0 +1,9 @@
+metric_val_loss: val_loss
+mode: min
+metric_val_avg_accuracy: acc_avg
+mode2: max
+seed: 2024
+num_workers: 4
+batch_size: 8
+lightningmodule: src.lightning.pose_effecientnet.LitPoseEffecientNet
+datamodule: src.lightning.dm_pose_effecientnet.KeypointDataModule

@@ -1,0 +1,3 @@
+name: pvt_v2
+pretrained: True # initialise the backbone with ImageNet weights (downloaded from the HuggingFace Hub)
+phi: 0 # PVTv2-B{phi} backbone
